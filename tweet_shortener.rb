@@ -17,11 +17,14 @@ end
 def word_substituter(tweet)
   words = tweet.split
 
-  words.map do |word|
-    if dictionary.keys.to_s.include?(word.downcase)
-
+  shorten_tweet = words.map do |word|
+    if dictionary.keys.include?(word.downcase)
+      word = dictionary[word.downcase]
     else
+      word
     end
   end
+
+  shorten_tweet.join(' ')
 
 end
