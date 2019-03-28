@@ -14,6 +14,10 @@ def dictionary
   }
 end
 
+def tweet_limit
+  140
+end
+
 def word_substituter(tweet)
   words = tweet.split
 
@@ -34,5 +38,21 @@ def bulk_tweet_shortener(tweets)
 end
 
 def selective_tweet_shortener(tweet)
-  tweet.length >= 140 ? word_substituter(tweet) : tweet
+  tweet.length >= tweet_limit ? word_substituter(tweet) : tweet
+end
+
+
+def shortened_tweet_truncator(tweet)
+
+  shortened_tweet = selective_tweet_shortener(tweet)
+
+  if shortened_tweet.length > tweet_limit
+
+    shortened_tweet[0...tweet_limit]
+
+  else
+    shortened_tweet
+  end
+
+
 end
